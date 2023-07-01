@@ -1,0 +1,12 @@
+.Button {
+    padding: 5px 15px;
+    border: 2px solid rgb(54, 124, 150);;
+    cursor: pointer;
+    width: 100%;
+
+    &:hover {
+        background-color: rgb(54, 124, 150);
+        transition: 0.3s;
+        color: rgb(255,255,255);
+    }
+}

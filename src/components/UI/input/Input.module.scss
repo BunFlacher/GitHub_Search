@@ -1,0 +1,18 @@
+.Input {
+    padding: 6px 15px;
+    min-width: 500px;
+    background-color: rgb(66,66,66);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.600);
+
+    &:focus {
+        outline: none;
+        border-color: rgb(66,66,66);
+        border: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.600);
+    }
+}
