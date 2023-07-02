@@ -1,0 +1,10 @@
+.List {
+    padding: 10px 15px;
+    color: rgba(255, 255, 255, 0.600);
+    border-bottom: 1px solid;
+    &:hover {
+        color: white;
+        transition: 0.300s;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.600);
+    }
+}
