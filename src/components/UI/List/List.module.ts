@@ -1,8 +1,4 @@
-import { MouseEventHandler } from "react"
+import { LiHTMLAttributes } from 'react'
 
-export interface MyList {
-    children: any
-    props?: any
-    onClick?: MouseEventHandler
-} 
+export interface MyList extends LiHTMLAttributes<HTMLLIElement> {}
 

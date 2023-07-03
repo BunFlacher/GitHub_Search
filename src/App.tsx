@@ -1,7 +1,7 @@
 import Navigation from "./components/Navigation";
 import {Routes, Route} from 'react-router-dom'
 import MainPage from "./pages/MainPage";
-import FavouritePage from "./pages/FavouritePage";
+import FavouritePage from "./pages/FavouritesPage";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Navigation />
       <Routes >
         <Route path="/" element={<MainPage/>}/>
-        <Route path="/favourite" element={<FavouritePage/>}/>
+        <Route path="/favourites" element={<FavouritePage/>}/>
       </Routes>
     </div>
   );

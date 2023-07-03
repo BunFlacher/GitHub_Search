@@ -16,7 +16,7 @@ const Navigation = () => {
                         hover:text-white transition duration-300 ease-in-out">
                         Main
                     </Link>
-                    <Link to='/favourite' className="text-xl text-[rgb(147,147,147)]
+                    <Link to='/favourites' className="text-xl text-[rgb(147,147,147)]
                         hover:text-white transition duration-300 ease-in-out ">
                         Favourite
                     </Link>

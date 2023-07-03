@@ -1,3 +1,7 @@
 * {
     @apply font-sans m-0 p-0 box-border
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
