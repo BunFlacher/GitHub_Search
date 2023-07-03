@@ -5,4 +5,7 @@ export interface RepoCardProps {
     search: string
     loading: boolean
     error: boolean
+    visible: boolean
+    clickBack: () => void
+    dropDown: boolean
 }

@@ -8,22 +8,32 @@ import RepoCardList from "../components/RepoCard/RepoCardList"
 const MainPage = () => {
     const [search, setSearch] = useState<string>('')
     const [dropDown, setDropDown] = useState(false)
+    const [dropDownRepos, setDropDownRepos] = useState(false)
+    const [inputVisible, setInputVisible] = useState(true)
     const debounced = useDebounce(search)
     const {data, isLoading, isError} = useSearchUsersQuery(debounced, {
-        skip: debounced.length < 2,
+        skip: debounced.length < 1,
         refetchOnFocus: true
     })
 
     const [fetchRepos, {data: repos, isLoading: areLoadingRepos, isError: areErrorRepos }] = useLazyGetUserReposQuery()
 
     useEffect(() => {
-        setDropDown(debounced.length > 2 && data?.length! > 0)
+        setDropDown(debounced.length > 1 && data?.length! > 0)
     }, [debounced, data])
 
     const clickHandler = (username: string) => {
         fetchRepos(username)
         setDropDown(false)
+        setInputVisible(false)
         setSearch('')
+        setDropDownRepos(true)
+    }
+
+    const clickBack = () => {
+        setInputVisible(true)
+        setSearch('')
+        setDropDownRepos(false)
     }
 
     return (
@@ -31,11 +41,11 @@ const MainPage = () => {
             {isError && <p className="text-[red] text-xl mb-[5px]">
                 Something went wrong...
             </p>}
-            <Input
+            {inputVisible && <Input
                 value={search}
                 placeholder="Search Users"
                 onChange={e => setSearch(e.target.value)}
-            />
+            />}
             {dropDown && <ul className="max-h-[500px] mt-[5px] w-screen overflow-y-scroll cursor-pointer flex flex-wrap">
                 {isLoading && <p className="">Loading...</p>}
                 {data?.map(user => (
@@ -46,12 +56,15 @@ const MainPage = () => {
                     </List>
                 ))}
             </ul>}
-            <RepoCardList 
-                repos={repos || []} 
+            {repos && <RepoCardList 
+                repos={repos} 
                 search={search} 
                 loading={areLoadingRepos} 
                 error={areErrorRepos}
-            />
+                visible={inputVisible}
+                clickBack={clickBack}
+                dropDown={dropDownRepos}
+            />}
         </div>
     )
 }

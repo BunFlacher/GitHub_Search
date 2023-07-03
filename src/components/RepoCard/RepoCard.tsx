@@ -6,20 +6,19 @@ import List from "../UI/list/List"
 import { IRepo } from "../../models/GitHub.models"
 
 const RepoCard = ({repo}: {repo: IRepo}) => {
-
-    const {addFavourites, removeFavourites} = useActions()
     const {favourites} = useAppSelector(state => state.github)
+    const {addFavourites, removeFavourites} = useActions()
 
-    const [visible, setVisible] = useState(favourites.includes(repo.html_url))
-
+    const [visible, setVisible] = useState(favourites.includes(repo))
+    
     const addToFavourite = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        addFavourites(repo.html_url)
+        addFavourites(repo)
         setVisible(true)
     }
     const removeFavourite = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        removeFavourites(repo.html_url)
+        removeFavourites(repo)
         setVisible(false)
     }
 
@@ -37,7 +36,7 @@ const RepoCard = ({repo}: {repo: IRepo}) => {
                         </Button>}
                         { visible && <Button 
                             onClick={removeFavourite} 
-                            className="border-[2px] border-black hover:bg-black "
+                            className="border-[2px] border-black hover:bg-black hover:text-white "
                             >
                             Remove
                         </Button>}
