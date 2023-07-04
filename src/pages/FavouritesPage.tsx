@@ -11,7 +11,10 @@ const FavouritePage = () => {
                 )}
             </div>
         )
-    } else {return (<p className="text-center text-2xl font-bold text-[rgb(147,147,147)] mt-[15px]">No one item</p>)}
+    } else {return (<p className="text-center text-2xl font-bold text-[rgb(147,147,147)] mt-[15px]"
+        >No one item
+    </p>)
+    }
 }
 
 export default FavouritePage
